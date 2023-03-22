@@ -11,21 +11,21 @@ function App() {
     const nuevaTarea = inputRef.current.value;
     //validación
     if (nuevaTarea !== '') {
-      setTareas([...tareas, { descripcion: nuevaTarea, completada: false }]);
+      setTareas([...tareas, { descripcion: nuevaTarea, completa: false }]);
       inputRef.current.value = '';
     } else {
       alert('No se puede ingresar una tarea vacía')
     }
   }
 
-  const handleClick = (index) => {
+  const handleClickEnTarea = (index) => {
     const nuevasTareas = [...tareas];
-    nuevasTareas[index].completada = true;
+    nuevasTareas[index].completa = true;
     setTareas(nuevasTareas);
   }
 
-  // Con filter creo un nuevo array que cumpla la condición en la que tarea.completada es false
-  const tareasPendientes = tareas.filter(tarea => !tarea.completada)
+  // Con filter creo un nuevo array que cumpla la condición en la que tarea.completa es false
+  const tareasPendientes = tareas.filter(tarea => !tarea.completa)
 
   return (
     <div>
@@ -37,8 +37,8 @@ function App() {
         {tareas.map((item, index) => (
           <li
             key={index}
-            onClick={() => handleClick(index)}
-            className={item.completada ? 'completada' : ''}
+            onClick={() => handleClickEnTarea(index)}
+            className={item.completa ? 'completa' : ''}
           >
             {item.descripcion}
           </li>
@@ -51,15 +51,3 @@ function App() {
 }
 
 export default App;
-
-
-
-
-
-
-
-// const handleCompleted = (index) => {
-//   const nuevaTarea = [...tareas]
-//   nuevaTarea[index].completada = true
-//   setTareas(nuevaTarea)
-// }
