@@ -5,6 +5,7 @@ import React, { useState, useRef } from 'react';
 function App() {
   
   const [tareas, setTareas] = useState([]);
+  
   const inputRef = useRef();
 
   const handleSubmit = () => {
@@ -29,23 +30,25 @@ function App() {
 
   return (
     <div>
-      <h1>To do list</h1>
-      <input type="text" ref={inputRef} />
-      <button onClick={handleSubmit}>Agregar</button>
+      <h1>Lista de tareas</h1>
 
-      <ul>
-        {tareas.map((item, index) => (
-          <li
-            key={index}
-            onClick={() => handleClickEnTarea(index)}
-            className={item.completa ? 'completa' : ''}
-          >
-            {item.descripcion}
-          </li>
-        ))}
-      </ul>
+      <div className='container'>
+        <input type="text" ref={inputRef} />
+        <button onClick={handleSubmit}>Añadir</button>
 
-      <p>Tareas pendientes: {tareasPendientes.length}</p>
+        <ul>
+          {tareas.map((item, index) => (
+            <li key={index} className={item.completa ? 'completa' : ''}>
+              {item.descripcion}
+              <button
+                className='btnBorrar' onClick={() => handleClickEnTarea(index)}>✔
+              </button>
+            </li>
+          ))}
+        </ul>
+        <p>Tareas pendientes: {tareasPendientes.length}</p>
+      </div>
+      
     </div>
   );
 }

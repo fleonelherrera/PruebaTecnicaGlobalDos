@@ -1,3 +1,20 @@
+* {
+    list-style: none;
+    text-align: center;
+}
+
+input {
+    margin: 10px;
+}
+
 .completa {
     text-decoration: line-through;
+}
+
+.nota {
+    font-weight: bolder;
+}
+
+.btnBorrar{
+    margin: 5px;
 }
